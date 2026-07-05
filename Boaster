@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Game Booster Pro")),
+        body: Center(
+          child: ElevatedButton(
+            onPressed: () async {
+              // Yahan BGMI ka package name hai
+              final Uri url = Uri.parse("package:com.pubg.imobile");
+              
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              } else {
+                // Agar game install nahi hai toh error dikhaye
+                print("BGMI installed nahi hai!");
+              }
+            },
+            child: Text("Launch BGMI"),
+          ),
+        ),
+      ),
+    );
+  }
+}
