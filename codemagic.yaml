@@ -1,0 +1,10 @@
+workflows:
+  sample-workflow:
+    name: Sample Workflow
+    max_build_duration: 60
+    environment:
+      flutter: stable
+    scripts:
+      - name: Get Flutter packages
+        script: flutter packages pub get
+        
